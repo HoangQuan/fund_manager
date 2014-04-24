@@ -1,7 +1,6 @@
 $(document).on "click", ".shop_detail1", (e)->
 	e.preventDefault()
-	$("#show_product1_modal").removeClass("hide")
-	$("#show_product1_modal").modal("show")
+	$("#show_product1_modal").sildeDown()
 $(document).on "click", ".shop_detail2", (e)->
 	e.preventDefault()
 	$("#show_product2_modal").removeClass("hide")

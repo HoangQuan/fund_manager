@@ -17,16 +17,26 @@ development:
   username: root
   password: "123456"
   socket: /var/run/mysqld/mysqld.sock
+
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
   reconnect: false
-  database: dbvh4tq5sd35c7
+  database: mixu_shop_development
   pool: 5
-  username: hhkbnywabiiatg
-  port: 5432
-  host: ec2-54-204-42-135.compute-1.amazonaws.com
-  password: "xVJ8NFBRSz9e6YbP81QCwbWsrB"
+  username: root
+  password: "123456"
+  socket: /var/run/mysqld/mysqld.sock
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   reconnect: false
+#   database: dbvh4tq5sd35c7
+#   pool: 5
+#   username: hhkbnywabiiatg
+#   port: 5432
+#   host: ec2-54-204-42-135.compute-1.amazonaws.com
+#   password: "xVJ8NFBRSz9e6YbP81QCwbWsrB"
   # socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
