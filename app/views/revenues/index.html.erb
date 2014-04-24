@@ -1,0 +1,34 @@
+<table class = "table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= Revenue.h :name %></th>
+      <th><%= Revenue.h :amount %></th>
+      <th><%= Revenue.h :content %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= check_box_tag "customer_ids[]", customer.id, false, id: "customer_#{customer.id}", class: "checkbox_record_id", "data-id" => customer.id %></td>
+        <td><%= link_to customer.code, admin_customer_path(customer) if customer.code %></td>
+        <td><%= link_to customer.try(:consultant).try(:m_distributor).try(:distributor_code), admin_m_distributor_path(customer.try(:consultant).try(:m_distributor)) if customer.consultant %></td>
+        <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+        <td><%= customer.come_from_label %></td>
+        <td id="consultant_<%= customer.id %>"><%= render partial: "select_consultant", locals: {customer: customer} %></td>
+        <td>
+          <div title="<%= customer.address.join("\n")%>"><%= customer.address.join("\n").truncate(40) %></div>
+          <%= link_to t("residence.show_map"), admin_customer_m_residence_path(customer, customer.m_residences.first), class: "btn" if customer.m_residences.present? %>
+        </td>
+        <td><%= customer.mobile_tel_label %></td>
+<!--         <td style="text-align: center;"><%= link_to t(".reset_password"), admin_customers_path(send_password: true, customer_id: customer.id), data: { confirm: t(:reset_password_confirm, scope: [:views, :labels])}, class: "btn send_password"%></td> -->
+      </tr>
+    <% end %>
+    <%= hidden_field_tag :count_record, @count_record = @count_record.present? ? @count_record : Customer.count %>
+  </tbody>
+</table>
+<div id="pagination_right"><%= paginate @customers %></div>
+<script>
+  <%= render "pagination.js", count_record: @count_record %>
+</script>
