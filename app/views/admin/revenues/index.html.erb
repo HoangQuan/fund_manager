@@ -1,0 +1,29 @@
+<selection id="customer_index">
+  <H1 class="page-title"> Danh sach khoan thu</H1>
+	<% if notice %>
+	  <%= notice %>
+	<% end %>
+	<%= link_to "Add new revenue", new_admin_revenue_path %>
+</selection>
+<table class = "table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Content</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @revenues.each do |revenue| %>
+      <tr>
+        <td><%= link_to revenue.name, admin_revenue_path(revenue) if revenue.name %></td>
+        <td><%=  revenue.amount %></td>
+        <td><%= revenue.content %></td>
+        <td><%= link_to "Show", admin_revenue_path(revenue) %></td>
+        <td><%= link_to "Delete", admin_revenue_path(revenue), method: :delete, data: {confirm: "Are you sure?"}%></td>
+    <% end %>
+  </tbody>
+</table>
+<script>
+</script>

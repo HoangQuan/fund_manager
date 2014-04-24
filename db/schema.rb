@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226042157) do
+ActiveRecord::Schema.define(version: 20140424061112) do
 
   create_table "product_types", force: true do |t|
     t.string   "name"
@@ -33,6 +33,30 @@ ActiveRecord::Schema.define(version: 20131226042157) do
     t.integer  "amount"
   end
 
+  create_table "revenues", force: true do |t|
+    t.string   "name"
+    t.float    "amount"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spendings", force: true do |t|
+    t.string   "name"
+    t.float    "amount"
+    t.string   "content"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_revenues", force: true do |t|
+    t.integer "user_id"
+    t.integer "user_revenue_id"
+    t.string  "status"
+  end
+
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -42,6 +66,9 @@ ActiveRecord::Schema.define(version: 20131226042157) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",            default: false
+    t.string   "type"
+    t.float    "amount"
+    t.float    "balance"
   end
 
 end

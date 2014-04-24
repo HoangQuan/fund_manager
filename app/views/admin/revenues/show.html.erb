@@ -1,0 +1,24 @@
+<selection id="revenue_show">
+  <h2><%= t(".title", name: "Revenue") %></h2>
+  <table class="table table-bordered">
+    <tr>
+      <td width = "200px">Name</td>
+      <td><%= @revenue.name %></td>
+    </tr>
+    <tr>
+      <td>Amount</td>
+      <td><%= @revenue.amount %></td>
+    </tr>
+    <tr>
+      <td>Content</td>
+      <td><%= @revenue.content %></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+      	<%= link_to "Edit", edit_admin_revenue_path(@revenue), class: :btn %>
+        <%= link_to t(".back"), admin_revenues_path, class: :btn %>
+        <%= link_to "Delete", admin_revenue_path(@revenue), method: :delete, data: {confirm: "Are you sure?"}, class: "btn"%>
+      </td>
+    </tr>
+  </table>
+</selection>

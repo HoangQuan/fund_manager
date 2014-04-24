@@ -1,0 +1,31 @@
+<%= form_for @revenue, url: url_for(action: @revenue.new_record? ? :create : :update) do |f| %>
+
+  <table class="table table-bordered width-table60">
+    <% if @revenue.errors.any? %>  
+      <tr>
+        <td colspan="2"><%= render partial: "errors", locals: { object: @revenue } %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td width = "200px">Name</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>Amount</td>
+      <td><%= f.text_field :amount %></td>
+    </tr>
+    <tr>
+      <td>Content</td>
+      <td><%= f.text_area :content, size: "50x10" %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><% button = @revenue.new_record? ? "Create" : "Edit" %>
+        <div class="form_btn">
+          <%= f.submit button, class:"btn btn-primary" %>
+          <%= link_to "Cancel", admin_revenues_path, class:"btn" %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
