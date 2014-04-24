@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
-
+  scope :order_by_created, ->{order "users.created_at DESC"}
+  scope :order_by_updated, ->{order "users.created_at DESC"}
   def large_image
     "http://graph.facebook.com/#{self.uid}/picture?type=large"
   end
