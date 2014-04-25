@@ -20,7 +20,7 @@
       <tr>
         <td><%= link_to spending.try(:user).try(:name), user_path(spending.try(:user)) if spending.user %></td>
         <td><%= link_to spending.name, admin_spending_path(spending) if spending.name %></td>
-        <td><%= spending.amount %></td>
+        <td><%= vn_to_currency(spending.amount) %></td>
         <td><%= spending.content %></td>
         <td><%= link_to "Show", admin_spending_path(spending) %></td>
         <td><%= link_to "Delete", admin_spending_path(spending), method: :delete, data: {confirm: "Are you sure?"}%></td>

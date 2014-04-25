@@ -1,0 +1,31 @@
+<selection id="total_cashes_index">
+  <h1>Tổng số tiền hiện có trong quỹ: 
+    <%= vn_to_currency(Admin::TotalCash.last.nil? ? 0 : Admin::TotalCash.last.current_total_cash) %></h1>
+  <H3 class="page-title"> Chi tiet tai khoan</H3>
+	<% if notice %>
+	  <%= notice %>
+	<% end %>
+	<%= link_to "Add new total cash", new_admin_total_cash_path %>
+</selection>
+<table class = "table table-bordered">
+  <thead>
+    <tr>
+      <th>Created User</th>
+      <th>Total Cash</th>
+      <th>Memo</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total_cashes.each do |total_cash| %>
+      <tr>
+        <td><%= link_to total_cash.try(:user).try(:name), user_path(total_cash.try(:user)) if total_cash.user %></td>
+        <td><%= vn_to_currency(total_cash.current_total_cash) %></td>
+        <td><%= total_cash.memo %></td>
+        <td><%= link_to "Show", admin_total_cash_path(total_cash) %></td>
+        <td><%= link_to "Delete", admin_total_cash_path(total_cash), method: :delete, data: {confirm: "Are you sure?"}%></td>
+    <% end %>
+  </tbody>
+</table>
+<script>
+</script>

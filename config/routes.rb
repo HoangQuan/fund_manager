@@ -11,6 +11,7 @@ MixuShop::Application.routes.draw do
   resources :admins
   namespace :admin do
     resources :revenues
+    resources :total_cashes
     resources :spendings
     resources :products
     resources :product_types
