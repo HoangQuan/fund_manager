@@ -1,0 +1,12 @@
+<section id="spendings-new">
+  <h1 class="page-title"><%= t ".title" %></h1>
+  <div class="actions">
+    <%= link_to t(".back"), admin_total_cashes_path, class: :btn %>
+  </div>
+  <%if Admin::TotalCash.count == 0%>
+    <%= render "form" %>
+  <%else%>
+     <div><h3>Khong co chuc nang tao moi</h3></div>
+  <%end%>
+</section>
+

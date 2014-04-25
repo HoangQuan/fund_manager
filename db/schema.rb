@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140425015828) do
   create_table "total_cashes", force: true do |t|
     t.float    "current_total_cash", default: 0.0
     t.integer  "log_id"
+    t.integer  "created_user_id"
     t.string   "memo"
     t.datetime "created_at"
     t.datetime "updated_at"

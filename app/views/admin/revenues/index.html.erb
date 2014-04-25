@@ -18,7 +18,7 @@
     <% @revenues.each do |revenue| %>
       <tr>
         <td><%= link_to revenue.name, admin_revenue_path(revenue) if revenue.name %></td>
-        <td><%=  revenue.amount %></td>
+        <td><%=  vn_to_currency(revenue.amount) %></td>
         <td><%= revenue.content %></td>
         <td><%= link_to "Show", admin_revenue_path(revenue) %></td>
         <td><%= link_to "Delete", admin_revenue_path(revenue), method: :delete, data: {confirm: "Are you sure?"}%></td>

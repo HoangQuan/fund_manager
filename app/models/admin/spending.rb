@@ -13,8 +13,10 @@ class Admin::Spending < ActiveRecord::Base
   def create_total_cash
     cash = Admin::TotalCash.new
     last_cash = Admin::TotalCash.last
+    cash.created_user_id = self.user.id
     cash.current_total_cash = (last_cash.nil? ? 0 : last_cash.current_total_cash - self.amount)
     cash.memo = "Thay đổi: Trừ đi tiền #{self.name} số tiền #{self.amount}"
+    binding.pry
     cash.save
   end
 end

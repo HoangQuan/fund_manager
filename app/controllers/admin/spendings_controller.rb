@@ -40,7 +40,7 @@ class Admin::SpendingsController < Admin::AdminController
   end
 
   def destroy
-    @spending = Admin::Revenue.find(params[:id])
+    @spending = Admin::Spending.find(params[:id])
     @spending.destroy
     redirect_to admin_spendings_path
   end

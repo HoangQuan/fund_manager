@@ -26,6 +26,13 @@ group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'rails_serve_static_assets'
 end
+group :development, :test do
+  gem "pry-rails"
+  gem "pry"
+  gem "pry-debugger"
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.0'
 
