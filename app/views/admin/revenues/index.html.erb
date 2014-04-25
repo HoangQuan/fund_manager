@@ -1,10 +1,7 @@
 <selection id="customer_index">
   <H1 class="page-title"> Danh sach khoan thu</H1>
    <% if notice %>
-    <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= content_tag :div, notice, :id => "#{notice}" %>
-    </div>
+    <p class="alert alert-notice"><%= notice %></p>
   <%end%>
 	<%= link_to "Add new revenue", new_admin_revenue_path %>
 </selection>

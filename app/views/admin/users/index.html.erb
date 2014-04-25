@@ -1,9 +1,6 @@
 <section id="products-index">
  <% if notice %>
-    <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= content_tag :div, notice, :id => "#{notice}" %>
-    </div>
+    <p class="alert alert-notice"><%= notice %></p>
   <%end%>
 <%= link_to "Add new user", new_admin_user_path %>
   <table class="table table-striped table-bordered">
@@ -57,7 +54,7 @@
     });
     $(document).on("click", "#submit_recharge<%=user.id%>", function(){
       var amount = $("#admin_user_balance<%=user.id%>").val();
-      var confirm_text = "Nạp "+amount+" cho tài khoản này. Bạn có chắc chắn?";
+      var confirm_text = "Nạp "+amount+" VND cho tài khoản này. Bạn có chắc chắn?";
       if(confirm(confirm_text)) {
         $("#edit_admin_user_<%=user.id%>").submit();
       }else{
