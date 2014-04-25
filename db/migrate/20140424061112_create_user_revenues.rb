@@ -4,6 +4,8 @@ class CreateUserRevenues < ActiveRecord::Migration
       t.integer :user_id
       t.integer :user_revenue_id
       t.string :status
+
+      t.timestamps
     end
   end
 end

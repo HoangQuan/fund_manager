@@ -25,11 +25,21 @@
     <tr>
       <td colspan="2"><% button = @spending.new_record? ? "Create" : "Edit" %>
         <div class="form_btn">
-          <%= f.submit button, class:"btn btn-primary" %>
+          <%= submit_tag button, class:"btn btn-primary", id: "submit_spending" %>
           <%= link_to "Cancel", admin_spendings_path, class:"btn" %>
         </div>
       </td>
     </tr>
   </table>
 <% end %>
-
+<script type="text/javascript">
+  $(document).on("click", "#submit_spending", function(){
+    var amount = $("#admin_spending_amount").val();
+    var confirm_text = "Khi tạo mới Khoản chi tổng số tiền hiện có sẽ bị trừ đi " + amount +"VND. Bạn có chắc chắn muốn tạo khoản chi này?";
+    if(confirm(confirm_text)) {
+      $("form").submit();
+    }else{
+      return false;
+    }
+  });
+</script>
