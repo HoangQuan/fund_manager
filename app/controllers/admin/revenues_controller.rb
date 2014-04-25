@@ -17,6 +17,7 @@ class Admin::RevenuesController < Admin::AdminController
     @revenue = Admin::Revenue.new(params.require(:admin_revenue).permit(:name, :amount, :content))
     if @revenue.valid?
       @revenue.save
+      @revenue.update_user_balance
       redirect_to admin_revenue_path(@revenue), notice: :".created"
     else
       render :new

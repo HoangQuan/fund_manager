@@ -15,9 +15,10 @@ class Admin::SpendingsController < Admin::AdminController
 
   def create
     @spending = Admin::Spending.new(params.require(:admin_spending).permit(:name, :amount, :content))
-    @spending.attributes = {created_user_id: current_user}
+    @spending.attributes = {created_user_id: current_user.id}
     if @spending.valid?
       @spending.save
+      @spending.create_total_cash
       redirect_to admin_spending_path(@spending), notice: :".created"
     else
       render :new
