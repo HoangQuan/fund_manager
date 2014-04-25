@@ -2,15 +2,15 @@
   <% if current_user %>
     <div class="test">
       <div class="search-user">
+        <%= search_form_for @q do |f| %>
         <table>
-          <%= search_form_for @q do |f| %>
             <tr>
               <td>Tìm Kiếm Thành Viên: </td>
               <td>Tên: <%= f.text_field :name_cont %>
-              <td><%= f.submit "Tìm Kiếm" %></td>
+              <%= f.submit "Tìm Kiếm" %></td>
             </tr>
-          <% end %>
         </table>
+        <% end %>
       </div>
       <h3><div class = "crumb">Trang Chủ > <%= link_to "Danh Sách Thành Viên", root_path %></div></h3>
     </div>
