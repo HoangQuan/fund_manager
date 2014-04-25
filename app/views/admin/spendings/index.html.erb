@@ -1,8 +1,11 @@
 <selection id="customer_index">
   <H1 class="page-title"> Danh sach khoan chi</H1>
-	<% if notice %>
-	  <%= notice %>
-	<% end %>
+	 <% if notice %>
+    <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, notice, :id => "#{notice}" %>
+    </div>
+  <%end%>
 	<%= link_to "Add new spending", new_admin_spending_path %>
 </selection>
 <table class = "table table-bordered">

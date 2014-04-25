@@ -2,9 +2,12 @@
   <h1>Tổng số tiền hiện có trong quỹ: 
     <%= vn_to_currency(Admin::TotalCash.last.nil? ? 0 : Admin::TotalCash.last.current_total_cash) %></h1>
   <H3 class="page-title"> Chi tiet tai khoan</H3>
-	<% if notice %>
-	  <%= notice %>
-	<% end %>
+  <% if notice %>
+    <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, notice, :id => "#{notice}" %>
+    </div>
+  <%end%>
 	<%= link_to "Add new total cash", new_admin_total_cash_path %>
 </selection>
 <table class = "table table-bordered">
