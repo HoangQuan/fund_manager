@@ -12,6 +12,10 @@
       <th>Admin: </th>
       <td><%= @user.admin%></td>
     </tr>
+    <tr>
+      <th>Balance: </th>
+      <td><%= vn_to_currency(@user.balance)%></td>
+    </tr>
   </table>
   <%= link_to "Back to home", root_path %>
 </section>

@@ -1,0 +1,22 @@
+<selection id="total_cash_show">
+  <h2><%= t(".title", name: "total_cash") %></h2>
+  <table class="table table-bordered">
+    <tr>
+      <td width = "200px">Created User</td>
+      <td><%= @total_cash.user.try(:name) %></td>
+    </tr>
+    <tr>
+      <td width = "200px">Current Cash</td>
+      <td><%= vn_to_currency(@total_cash.current_total_cash) %></td>
+    </tr>
+    <tr>
+      <td>Chi tiet</td>
+      <td><%= @total_cash.memo %></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= link_to t(".back"), admin_total_cashes_path, class: :btn %>
+      </td>
+    </tr>
+  </table>
+</selection>
