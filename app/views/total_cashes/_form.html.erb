@@ -1,0 +1,41 @@
+<%= form_for @total_cash, url: url_for(action: @total_cash.new_record? ? :create : :update) do |f| %>
+
+  <table class="table table-bordered width-table60">
+    <% if @total_cash.errors.any? %>  
+      <tr>
+        <td colspan="2"><%= render partial: "errors", locals: { object: @total_cash } %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td width = "200px">Create User</td>
+      <td><%= current_user.try(:name) %></td>
+    </tr>
+    <tr>
+      <td width = "200px">Current Total Cash</td>
+      <td><%= f.text_field :current_total_cash %></td>
+    </tr>
+    <tr>
+      <td>Content</td>
+      <td><%= f.text_area :memo, size: "50x10" %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><% button = @total_cash.new_record? ? "Create" : "Edit" %>
+        <div class="form_btn">
+          <%= submit_tag button, class:"btn btn-primary", id: "submit_total_cash" %>
+          <%= link_to "Cancel", admin_total_cashes_path, class:"btn" %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>
+<script type="text/javascript">
+  $(document).on("click", "#submit_spending", function(){
+    var amount = $("#admin_spending_amount").val();
+    var confirm_text = "Bạn có chắc chắn muốn tạo Thay đổi?";
+    if(confirm(confirm_text)) {
+      $("form").submit();
+    }else{
+      return false;
+    }
+  });
+</script>

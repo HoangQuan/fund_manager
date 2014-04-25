@@ -7,13 +7,12 @@
             <tr>
               <td>Tìm Kiếm Thành Viên: </td>
               <td>Tên: <%= f.text_field :name_cont %>
-              <td>Chon: <%= f.collection_select :id_eq, User.all, :id, :name, include_blank: "Tất Cả", height: "24px" %></td>
               <td><%= f.submit "Tìm Kiếm" %></td>
             </tr>
           <% end %>
         </table>
       </div>
-      <div class = "crumb">Trang Chủ > <%= link_to "Thành Viên", root_path %></div>
+      <h3><div class = "crumb">Trang Chủ > <%= link_to "Danh Sách Thành Viên", root_path %></div></h3>
     </div>
     <table class="table-user table">
     <% @users.each_with_index do |user, i|%>

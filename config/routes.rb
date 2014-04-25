@@ -5,9 +5,10 @@ MixuShop::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   resources :users
-  resources :products
-  resources :revenues
-  resources :spendings
+  resources :products, only: [:show, :index]
+  resources :revenues, only: [:show, :index]
+  resources :spendings, only: [:show, :index]
+  resources :total_cashes, only: [:show, :index]
   resources :admins
   namespace :admin do
     resources :revenues

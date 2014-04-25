@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::AdminController
   before_filter :admin_user
 
   def index
-    @users = User.order(:updated_at).page(params[:page]).per(15)
+    @users = User.order(:created_at).page(params[:page]).per(15)
   end
   def new
     @user = Admin::User.new
@@ -30,8 +30,12 @@ class Admin::UsersController < Admin::AdminController
   def update
     @user = Admin::User.find(params[:id])
     user = params.require(:admin_user).permit(:name, :admin)
+    if params[:charge]
+      @user.balance = @user.balance + params[:admin_user][:balance].to_i
+    end
     if @user.update(user)
-      redirect_to admin_user_path(@user), notice: :".updateted"
+      @user.create_total_cash(params[:admin_user][:balance].to_i)
+      redirect_to admin_users_path(), notice: :".updateted"
     else
       render :edit
     end

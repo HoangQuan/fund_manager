@@ -1,0 +1,29 @@
+<selection id="customer_index">
+  <H1 class="page-title"> Danh sach khoan chi</H1>
+	<% if notice %>
+	  <%= notice %>
+	<% end %>
+</selection>
+<table class = "table table-bordered">
+  <thead>
+    <tr>
+      <th>Created User</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Content</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @spendings.each do |spending| %>
+      <tr>
+        <td><%= link_to spending.try(:user).try(:name), user_path(spending.try(:user)) if spending.user %></td>
+        <td><%= link_to spending.name, admin_spending_path(spending) if spending.name %></td>
+        <td><%= vn_to_currency(spending.amount) %></td>
+        <td><%= spending.content %></td>
+        <td><%= link_to "Chi Tiet", admin_spending_path(spending) %></td>
+    <% end %>
+  </tbody>
+</table>
+<script>
+</script>
