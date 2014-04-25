@@ -18,10 +18,10 @@
     <% @spendings.each do |spending| %>
       <tr>
         <td><%= link_to spending.try(:user).try(:name), user_path(spending.try(:user)) if spending.user %></td>
-        <td><%= link_to spending.name, admin_spending_path(spending) if spending.name %></td>
+        <td><%= link_to spending.name, spending_path(spending) if spending.name %></td>
         <td><%= vn_to_currency(spending.amount) %></td>
         <td><%= spending.content %></td>
-        <td><%= link_to "Chi Tiet", admin_spending_path(spending) %></td>
+        <td><%= link_to "Chi Tiet", spending_path(spending) %></td>
     <% end %>
   </tbody>
 </table>
