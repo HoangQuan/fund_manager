@@ -18,26 +18,26 @@ development:
   password: "123456"
   socket: /var/run/mysqld/mysqld.sock
 
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: mixu_shop_development
-  pool: 5
-  username: root
-  password: "123456"
-  socket: /var/run/mysqld/mysqld.sock
 # production:
-#   adapter: postgresql
-#   encoding: unicode
+#   adapter: mysql2
+#   encoding: utf8
 #   reconnect: false
-#   database: dbvh4tq5sd35c7
+#   database: mixu_shop_development
 #   pool: 5
-#   username: hhkbnywabiiatg
-#   port: 5432
-#   host: ec2-54-204-42-135.compute-1.amazonaws.com
-#   password: "xVJ8NFBRSz9e6YbP81QCwbWsrB"
-  # socket: /var/run/mysqld/mysqld.sock
+#   username: root
+#   password: "123456"
+#   socket: /var/run/mysqld/mysqld.sock
+production:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  database: d3r648d3jdip2e
+  pool: 5
+  username: iqxoiripuefimw
+  port: 5432
+  password: "vsvWUOvJyHZevAtB0SmxIQgNa3"
+  host: ec2-54-225-135-30.compute-1.amazonaws.com
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
