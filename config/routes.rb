@@ -6,6 +6,9 @@ MixuShop::Application.routes.draw do
 
   resources :users
   resources :products
+  resources :revenues
+  resources :spendings
+  resources :admins
   namespace :admin do
     resources :revenues
     resources :spendings
