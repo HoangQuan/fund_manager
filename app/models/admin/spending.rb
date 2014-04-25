@@ -3,7 +3,7 @@ class Admin::Spending < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :products
-  belongs_to :user, class_name: Admin::User.name, foreign_key: :created_user_id
+  belongs_to :user, foreign_key: :created_user_id
 
   validates :amount, presence: true
   validates :amount, numericality: {greater_than_or_equal_to: 0}
