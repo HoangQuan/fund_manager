@@ -4,7 +4,7 @@ class Admin::Revenue < ActiveRecord::Base
   validates :amount, presence: true
   validates :amount, numericality: {greater_than_or_equal_to: 0}
 
-  has_many :user_revenues
+  has_many :user_revenues, dependent: :destroy
 
   has_many :products
 
