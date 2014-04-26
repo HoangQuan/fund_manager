@@ -16,3 +16,4 @@
 //= require bootstrap
 //= require product
 //= require_tree .
+//= require bootstrap-progressbar.js
