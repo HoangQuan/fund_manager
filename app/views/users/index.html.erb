@@ -14,14 +14,25 @@
       </div>
       <h3><div class = "crumb">Trang Chủ > <%= link_to "Danh Sách Thành Viên", root_path %></div></h3>
     </div>
-    <table class="table-user table">
+    <table class="table-user table table-bordered table-striped">
     <% @users.each_with_index do |user, i|%>
+    <tr>
       <td class = "td-user">
         <div class="user-image">
             <%=link_to image_tag(user.large_image, width: "110", height: "130"), user_path(user) %>
         </div>
         <div><%= user.name %></div>
       </td>
+      <td>Số Dư: <%= vn_to_currency(user.balance)%><br>
+        Loại tài khoản: <%= user.admin ? "Admin" : "Thường dân"%>
+      </td>
+      <td>Trạng thái đóng tiền: <br>
+        Bạn đã nộp  <%= Admin::User.find(user.id).user_revenues.where(status: "Đã Nộp").count%>  lần trên tổng số <%= Admin::UserRevenue.count%> Lần thu
+        <div class="progress progress-striped active">
+          <div class="bar bar-warning" role="progressbar" aria-valuetransitiongoal="80"></div>
+        </div>
+      </td>
+    </tr>
     <% end %>
     <tr><td colspan="5"><%= paginate @users %><td></tr>
   </table>
@@ -33,41 +44,48 @@
     <h3>Bạn Cần Phải Đăng nhập <%= link_to "Đăng nhập ngay", "/auth/facebook", id: "sign_in" %></h3>
   <% end %>
 </div>
-<script>
-// function share
-	(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script>
 <!-- comment box -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 <div id="fb-root"></div>
 <!-- like box -->
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <!-- like buttom -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script type="text/javascript">
+  $(document).on("page:change", function(){
+    $('.bar').progressbar();
+// function share
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1445229255722249";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  });
+</script>
+
