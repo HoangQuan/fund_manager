@@ -15,3 +15,37 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
+.btn-complete{
+  display: inline;
+  border-style:solid;
+  border-color:#5ABD42 #5ABD42 #5ABD42 #5ABD42;
+  border-width:7px 10px 7px 10px;
+  width:9em;
+  height:2em;
+  background:#5ABD42;
+  color:#333;
+  line-height:2;
+  text-align:center;
+  text-decoration:none;
+  font-weight:100;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+.btn-danger {
+  display: inline;
+  border-style:solid;
+  border-color:#F0062B #F0062B #F0062B #F0062B;
+  border-width:7px 10px 7px 10px;
+  width:9em;
+  height:2em;
+  background:#F0062B;
+  color:#333;
+  line-height:2;
+  text-align:center;
+  text-decoration:none;
+  font-weight:100;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}

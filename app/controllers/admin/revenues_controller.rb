@@ -18,6 +18,7 @@ class Admin::RevenuesController < Admin::AdminController
     if @revenue.valid?
       @revenue.save
       @revenue.update_user_balance
+      @revenue.create_user_revences
       redirect_to admin_revenue_path(@revenue), notice: :".created"
     else
       render :new

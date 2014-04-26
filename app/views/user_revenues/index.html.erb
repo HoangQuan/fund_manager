@@ -1,0 +1,43 @@
+<selection id="customer_index">
+  <H1 class="page-title"> Danh sách người dùng và trạng thái nộp quỹ</H1>
+   <% if notice %>
+    <p class="alert alert-notice"><%= notice %></p>
+  <%end%>
+</selection>
+  <div class="search-user">
+    <%= search_form_for @q do |f| %>
+    <table>
+        <tr>
+          <td>Tìm Kiếm Thành Viên: </td>
+          <td>Tên: <%= f.text_field :user_name_cont %>
+            Trang thai: Tên: <%= f.select :status_cont, options_for_select(["Chưa Nộp", "Đã Nộp"]), include_blank: true %>
+          <%= f.submit "Tìm Kiếm" %></td>
+        </tr>
+    </table>
+    <% end %>
+  </div>
+<table class = "table table-bordered">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Revenue Name</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th colspan="">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_revenues.each do |user_revenue| %>
+      <tr>
+        <td><%= link_to user_revenue.try(:user).try(:name), admin_user_path(user_revenue.try(:user)) if user_revenue.user %></td>
+        <td><%=  link_to user_revenue.try(:revenue).try(:name), admin_revenue_path(user_revenue.try(:revenue)) if user_revenue.revenue %></td>
+        <td><%= vn_to_currency(user_revenue.try(:revenue).try(:amount)) %></td>
+        <td><div class="<%= user_revenue.status == "Chưa Nộp" ? "btn-danger" : "btn-complete" %>"><%= user_revenue.status %></div>
+        </td>
+        <td><%= link_to "Show", admin_user_revenue_path(user_revenue) %></td>
+    <% end %>
+  </tbody>
+</table>
+<script>
+
+</script>

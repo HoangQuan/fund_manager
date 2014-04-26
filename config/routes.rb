@@ -8,9 +8,11 @@ MixuShop::Application.routes.draw do
   resources :products, only: [:show, :index]
   resources :revenues, only: [:show, :index]
   resources :spendings, only: [:show, :index]
+  resources :user_revenues
   resources :total_cashes, only: [:show, :index]
   resources :admins
   namespace :admin do
+    resources :user_revenues
     resources :revenues
     resources :total_cashes
     resources :spendings
