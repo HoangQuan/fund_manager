@@ -27,10 +27,15 @@
         Loại tài khoản: <%= user.admin ? "Admin" : "Thường dân"%>
       </td>
       <td>Trạng thái đóng tiền: <br>
-        Bạn đã nộp  <%= Admin::User.find(user.id).user_revenues.where(status: "Đã Nộp").count%>  lần trên tổng số <%= Admin::UserRevenue.count%> Lần thu
+        <%
+          user_revenue = Admin::User.find(user.id).user_revenues.where(status: "Đã Nộp").count
+          total_revenues = Admin::Revenue.count
+         performent = total_revenues > 0 ? (((user_revenue.to_f)/(total_revenues).to_f)*100).ceil : 100 %>
+        Bạn đã nộp  <%=user_revenue%>  lần trên tổng số <%= Admin::Revenue.count %> Lần thu
         <div class="progress progress-striped active">
-          <div class="bar bar-warning" role="progressbar" aria-valuetransitiongoal="80"></div>
+          <div class='progress-bar <%= (performent == 100 || performent == 0) ? "progress-bar-success" : "progress-bar-warning"%>' aria-valuetransitiongoal="<%= performent %>"></div>
         </div>
+        <%= performent %>%
       </td>
     </tr>
     <% end %>
@@ -53,7 +58,7 @@
 <div id="fb-root"></div>
 <script type="text/javascript">
   $(document).on("page:change", function(){
-    $('.bar').progressbar();
+    $(".progress-bar").progressbar();
 // function share
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
