@@ -61,9 +61,11 @@ ActiveRecord::Schema.define(version: 20140426023250) do
   end
 
   create_table "user_revenues", force: true do |t|
-    t.integer "user_id"
-    t.string  "status"
-    t.integer "revenue_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "revenue_id"
   end
 
   create_table "users", force: true do |t|
